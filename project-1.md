@@ -5,7 +5,7 @@
 # Bases de Dados
 | Titulo | Link | Descrição |
 | ------ | ---- | --------- |
-| FooDB | (https://www.foodb.ca/) | foodb |
+| FooDB | https://www.foodb.ca/ | foodb |
 | Food Recipes | Content Cell  | sla |
 | Faostat | Content Cell  | sla |
 
