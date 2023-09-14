@@ -3,6 +3,10 @@
 # Motivação e Contexto
 
 # Bases de Dados
+| Título | Link | Descrição |
+| --- | --- |
+| git status | List all new or modified files | sla |
+| git diff | Show file differences that haven't been staged | sla |
 
 # Modelo Conceitual
 
