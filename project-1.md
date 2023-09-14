@@ -6,8 +6,8 @@
 | Titulo | Link | Descrição |
 | ------ | ---- | --------- |
 | FooDB | https://www.foodb.ca/ | foodb |
-| Food Recipes | Content Cell  | sla |
-| Faostat | Content Cell  | sla |
+| Food Recipes | [https://www.kaggle.com/](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions)  | sla |
+| Faostat | [https://www.fao.org/](https://www.fao.org/faostat/en/#data/PP) | sla |
 
 # Modelo Conceitual
 
