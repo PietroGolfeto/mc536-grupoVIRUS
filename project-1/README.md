@@ -1,4 +1,5 @@
 # Slides da Apresentação
+[Link para a Apresentação](https://docs.google.com/presentation/d/1kNuzDeh0La-OCHrZmxvyGKZeyDCqgGKv6Llom7XcnzI/edit#slide=id.p21)
 
 # Motivação e Contexto
 O projeto apresentado objetiva a união de dados oriundos de 3 bancos distintos para tecer uma análise nova, impossível em uma abordagem individual. Nesse sentido, cada uma das fontes selecionada traz uma visão diferente sobre um mesmo tema, compondo um mosaico multifacetado. A saber, Kaggle contribui com uma abordagem voltada a avaliações qualitativas de receitas, FooDB foca nos aspectos nutricionais quantitativos de ingredientes e FAOSTAT traz uma frente econômica e geográfica. 
