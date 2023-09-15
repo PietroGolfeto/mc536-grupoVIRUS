@@ -13,6 +13,25 @@
 
 # Modelos Lógicos
 
+```
+Receita (_ID_, Avaliação média, Número de Avaliações)
+
+Ingrediente (_ID_, Nome, Descrição)
+
+Nutriente (_ID_, Nome, Descrição)
+
+PrecoProducao (_ID_Ingrediente_, _Ano_, _Regiao de venda_, Preço Anual)
+  ID_Ingrediente: chave estrangeira -> Ingrediente
+
+IngredientesReceita (_ID_Receita_, _ID_Ingrediente_, Unidade de medida, Quantidade)
+  ID_Receita: chave estrangeira -> Receita
+  ID_Ingrediente: chave estrangeira -> Ingrediente
+
+ValorNutricional (_ID_Ingrediente_, _ID_Nutriente_, Quantidade média, Unidade de medida)
+  ID_Nutriente: chave estrangeira -> Nutriente
+  ID_Ingrediente: chave estrangeira -> Ingrediente
+```
+
 # Perguntas de Pesquisa/Análise
 
 ## Pergunta/Análise 1
