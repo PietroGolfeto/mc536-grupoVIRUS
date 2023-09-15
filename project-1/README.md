@@ -11,6 +11,7 @@ O presente projeto busca, através do cruzamento de dois bancos de dados de font
 | Faostat | [https://www.fao.org/](https://www.fao.org/faostat/en/#data/PP) | Base de dados mantida pela FAOSTAT, incluindo informações sobre os preços de produção de alimentos pagos pelo setor de agropecuária.|
 
 # Modelo Conceitual
+<img src="images/DiagramaER_ProjetoBD_VIRUS.png" width="auto" height="auto">
 
 # Modelos Lógicos
 
