@@ -41,7 +41,7 @@ ValorNutricional (_ID_Ingrediente_, _ID_Nutriente_, Quantidade média, Unidade d
 
 ## Pergunta/Análise 1
 * Qual o preço de produção bruto de uma dada receita baseado nos ingredientes e quantidades das quais ela é composta?
-  - Usando os dados de preços da FAOSTAT e a análise dos ingredientes da receita com os dados do Food Recipes, será calculado o custo de produção por ingrediente. Os preços podem ser minimizados com base nos países que cobram o menor custo por cada ingrediente. O preço de produção bruto da receita irá consistir na soma dos preços por ingrediente. 
+  - Usando os dados de preços da FAOSTAT e a análise dos ingredientes da receita com os dados do Food Recipes, será calculado o custo de produção por ingrediente. Os preços podem ser minimizados com base nas regiões globais que cobram o menor custo por cada ingrediente. O preço de produção bruto da receita irá consistir na soma dos preços por ingrediente. 
 
 ## Pergunta/Análise 2
 * Quais os ingredientes mais comuns em certas receitas e como seus preços têm variado ao longo do tempo? 
