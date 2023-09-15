@@ -17,12 +17,11 @@
 
 ## Pergunta/Análise 1
 * Qual o preço de produção bruto de uma dada receita baseado nos ingredientes e quantidades das quais ela é composta?
-  - Usando os dados de preços da Faostat e a análise dos ingredientes da receita com os dados do Food Recipes, será calculado o custo de produção por ingrediente. Os preços podem ser minimizados com base nos países que cobram o menor custo por cada ingrediente. O preço de produção bruto da receita irá consistir na soma dos preços por ingrediente. 
+  - Usando os dados de preços da FAOSTAT e a análise dos ingredientes da receita com os dados do Food Recipes, será calculado o custo de produção por ingrediente. Os preços podem ser minimizados com base nos países que cobram o menor custo por cada ingrediente. O preço de produção bruto da receita irá consistir na soma dos preços por ingrediente. 
 
 ## Pergunta/Análise 2
 * Quais os ingredientes mais comuns em certas receitas e como seus preços têm variado ao longo do tempo? 
-  - A análise consistirá em observar a composição de certas receitas, e em seguida, utilizar dados da faostat para identificar as variações de preço ao longo do tempo.
-
+  - A análise consistirá em observar a composição de certas receitas, e em seguida, utilizar dados da FAOSTAT para identificar as variações de preço ao longo do tempo.
 
 ## Pergunta/Análise 3
 * Qual o perfil nutricional das receitas?
@@ -31,7 +30,6 @@
 ## Pergunta/Análise 4
 * Quais as receitas mais e menos consumidas? O quão balanceados nutricionalmente são os pratos mais populares?
   - Com base no número de avaliações, é possível fazer uma análise das receitas mais consumidas. Assim, a partir da qualidade das avaliações, será feito um levantamento das receitas favoritas, e uma avaliação de seu perfil nutricional.
-
 
 # Perguntas/Análise Propostas mas Não Implementadas
 
