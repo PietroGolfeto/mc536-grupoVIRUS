@@ -1,7 +1,9 @@
 # Slides da Apresentação
 
 # Motivação e Contexto
-O presente projeto busca, através do cruzamento de dois bancos de dados de fontes distintas, concluir de modo categórigo qual o valor exato (bruto) de cada receita pertencente ao banco de dados "Food Recipes and Interactions" (Kaggle), baseando-se puramente nos ingredientes (alimentos comuns não processados) de sua composição presentes no banco de dados "FooDB", conjuntamente com as quantias correspondentes; assim, por meio deste será possível a predição do valor bruto da produção de qualquer receita (nova ou ja anteriormente existente) através do uso do banco de dados "Faostat", bem como uma analise descritiva relativa às tendencias de aumento preços de ingredientes e receitas em diferentes países ao longo de 2 decádas (1991-2022).
+O projeto apresentado objetiva a união de dados oriundos de 3 bancos distintos para tecer uma análise nova, impossível em uma abordagem individual. Nesse sentido, cada uma das fontes selecionada traz uma visão diferente sobre um mesmo tema, compondo um mosaico multifacetado. A saber, Kaggle contribui com uma abordagem voltada a avaliações qualitativas de receitas, FooDB foca nos aspectos nutricionais quantitativos de ingredientes e FAOSTAT traz uma frente econômica e geográfica. 
+Isso permite abordar a complexidade  interdisciplinar da alimentação, contemplando desde culinária até nutrição e geografia.
+Através do cruzamento de dois bancos de dados de fontes distintas, concluir de modo categórigo qual o valor exato (bruto) de cada receita pertencente ao banco de dados "Food Recipes and Interactions" (Kaggle), baseando-se puramente nos ingredientes (alimentos comuns não processados) de sua composição presentes no banco de dados "FooDB", conjuntamente com as quantias correspondentes; assim, por meio deste será possível a predição do valor bruto da produção de qualquer receita (nova ou ja anteriormente existente) através do uso do banco de dados "Faostat", bem como uma analise descritiva relativa às tendencias de aumento preços de ingredientes e receitas em diferentes países ao longo de 2 decádas (1991-2022).
 
 # Bases de Dados
 | Titulo | Link | Descrição |
