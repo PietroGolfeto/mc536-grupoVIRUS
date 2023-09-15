@@ -1,6 +1,7 @@
 # Slides da Apresentação
 
 # Motivação e Contexto
+O presente projeto busca, através do cruzamento de dois bancos de dados de fontes distintas, concluir de modo categórigo qual o valor exato (bruto) de cada receita pertencente ao banco de dados "Food Recipes and Interactions" (Kaggle), baseando-se puramente nos ingredientes (alimentos comuns não processados) de sua composição presentes no banco de dados "FooDB", conjuntamente com as quantias correspondentes; assim, por meio deste será possível a predição do valor bruto através o uso do banco de dados "Faostat" da produção de qualquer receita (nova ou ja anteriormente existente), dado informações suficientes, bem como uma analise descritiva relativa às tendencias de aumento preços de ingredientes e receitas em diferentes países ao longo de 2 decádas (1991-2022).
 
 # Bases de Dados
 | Titulo | Link | Descrição |
