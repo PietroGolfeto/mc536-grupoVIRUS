@@ -1,5 +1,5 @@
 Food code,Main food description,Energy (kcal),Protein (g),Carbohydrate (g),"Sugars, total
-(g)","Fiber, total dietary (g)",Total Fat (g),Cholesterol (mg),"Vitamin A, RAE (mcg_RAE)",Vitamin B-6 (mg),Vitamin C (mg),Calcium (mg),"Iron
+(g)","Fiber, total dietary (g)",Total Fat (g),Cholesterol (mg),Vitamin A RAE (mcg_RAE),Vitamin B-6 (mg),Vitamin C (mg),Calcium (mg),"Iron
 (mg)",Potassium (mg),Sodium (mg),Caffeine (mg),Alcohol (g),"Water
 (g)"
 11000000,"Milk, human",70,1.03,6.89,"6.89","0",4.38,14,"61",0.011,5,32,"0.03",51,17,0,0,"87.5"
