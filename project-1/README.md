@@ -19,22 +19,19 @@ Através do cruzamento dois bancos de dados citados, é admissível concluir de 
 # Modelos Lógicos
 
 ```
-Receita (_ID_, Avaliação média, Número de Avaliações)
+Recipe(_Food_Code_, Food_Desc, Food_Abbrev_Desc)
 
-Ingrediente (_ID_, Nome, Descrição)
+Crop_Group(_CGN_, _CGL_, Crop_Group_Description, Is_Vegan)
 
-Nutriente (_ID_, Nome, Descrição)
+Ingredient(_FCID_Code_, _Crop_Group_, FCID_Desc, Popularity)
+  Crop_Group: chave estrangeira -> Crop_Group
 
-PrecoProducao (_ID_Ingrediente_, _Ano_, _Regiao de venda_, Preço Anual)
-  ID_Ingrediente: chave estrangeira -> Ingrediente
+RecipeComposition(_Food_Code_, _FCID_Code_, _Mod_Code_, Ingredient_Order)
+  Food_Code: chave estrangeira -> Recipe
+  FCID_Code: chave estrangeira -> Ingredient
 
-IngredientesReceita (_ID_Receita_, _ID_Ingrediente_, Unidade de medida, Quantidade)
-  ID_Receita: chave estrangeira -> Receita
-  ID_Ingrediente: chave estrangeira -> Ingrediente
-
-ValorNutricional (_ID_Ingrediente_, _ID_Nutriente_, Quantidade média, Unidade de medida)
-  ID_Nutriente: chave estrangeira -> Nutriente
-  ID_Ingrediente: chave estrangeira -> Ingrediente
+Nutrient_Values(_Food_Code_, Main food description, Energy (kcal), Carbohydrate (g), Protein (g), Sugars total (g), Total Fat (g), Cholesterol (mg), Fiber total dietary (g), Vitamin A RAE (mcg_RAE), Vitamin B-6 (mg), Vitamin C (mg), Calcium (mg), Iron (mg), Potassium (mg), Sodium (mg), Caffeine (mg), Alcohol (g), Water (g))
+  Food_Code: chave estrangeira -> Recipe
 ```
 
 # Perguntas de Pesquisa/Análise
