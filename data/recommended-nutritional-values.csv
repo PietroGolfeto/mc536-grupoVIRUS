@@ -2,26 +2,14 @@ Nutrient,Reference Daily Intake
 Energy (kcal),2000
 Protein (g),50
 Carbohydrate (g),275
-"Sugars, total (g)",50
-"Fiber,  total dietary (g)",28
+Sugars total (g),50
+Fiber total dietary (g),28
 Total Fat (g),78
-"Fatty acids,  total saturated (g)",20
-"Fatty acids,  total monounsaturated (g)",40
-"Fatty acids,  total polyunsaturated (g)",18
 Cholesterol (mg),300
-"Vitamin A,  RAE (mcg_RAE)",900
+Vitamin A  RAE (mcg_RAE),900
 Vitamin B-6 (mg),1.7
-Vitamin B-12 (mcg),2.4
 Vitamin C (mg),90
-Vitamin D (D2 + D3) (mcg),20
-Vitamin E (alpha-tocopherol) (mg),15
-Vitamin K (phylloquinone) (mcg),120
 Calcium (mg),1300
-Phosphorus (mg),1250
-Magnesium (mg),420
 Iron (mg),18
-Zinc (mg),11
-Copper (mg),0.9
-Selenium (mcg),55
 Potassium (mg),4700
 Sodium (mg),2300
