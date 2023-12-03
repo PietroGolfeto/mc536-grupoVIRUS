@@ -1,15 +1,2 @@
-Nutrient,Reference Daily Intake
-Energy (kcal),2000
-Protein (g),50
-Carbohydrate (g),275
-Sugars total (g),50
-Fiber total dietary (g),28
-Total Fat (g),78
-Cholesterol (mg),300
-Vitamin A  RAE (mcg_RAE),900
-Vitamin B-6 (mg),1.7
-Vitamin C (mg),90
-Calcium (mg),1300
-Iron (mg),18
-Potassium (mg),4700
-Sodium (mg),2300
+Energy_(kcal),Protein_(g),Carbohydrate_(g),Sugars_total(g),Fiber_total_dietary_(g),Total_Fat_(g),Cholesterol_(mg),Vitamin_A_RAE_(mcg_RAE),Vitamin_B-6_(mg),Vitamin_C_(mg),Calcium_(mg),Iron(mg),Potassium_(mg),Sodium_(mg)
+2000,50,275,50,28,78,300,900,1.7,90,1300,18,4700,2300

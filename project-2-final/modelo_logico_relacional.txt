@@ -1,11 +1,11 @@
-Recipe(_Food_Code_, Food_Desc, Food_Abbrev_Desc)
+Recipe(_Food_Code_, Food_Desc)
 
-Crop_Group(_CGN_, _CGL_, Crop_Group_Description, Is_Vegan)
+Crop_Group(_CGN_, Crop_Group_Description, Is_Vegan)
 
 Ingredient(_FCID_Code_, _Crop_Group_, FCID_Desc, Popularity)
   Crop_Group: chave estrangeira -> Crop_Group
 
-Recipe_Composition(_Food_Code_, _FCID_Code_, _Mod_Code_, Ingredient_Order)
+Recipe_Composition(_Food_Code_, _FCID_Code_, Ingredient_Order)
   Food_Code: chave estrangeira -> Recipe
   FCID_Code: chave estrangeira -> Ingredient
 

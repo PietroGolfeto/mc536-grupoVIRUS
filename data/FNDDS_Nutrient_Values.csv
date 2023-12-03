@@ -1,4 +1,4 @@
-Food code,Main food description,Energy (kcal),Protein (g),Carbohydrate (g),Sugars total(g),Fiber total dietary (g),Total Fat (g),Cholesterol (mg),Vitamin A RAE (mcg_RAE),Vitamin B-6 (mg),Vitamin C (mg),Calcium (mg),Iron(mg),Potassium (mg),Sodium (mg),Caffeine (mg),Alcohol (g)
+Food_code,Main_food_description,Energy_(kcal),Protein_(g),Carbohydrate_(g),Sugars_total(g),Fiber_total_dietary_(g),Total_Fat_(g),Cholesterol_(mg),Vitamin_A_RAE_(mcg_RAE),Vitamin_B-6_(mg),Vitamin_C_(mg),Calcium_(mg),Iron(mg),Potassium_(mg),Sodium_(mg),Caffeine_(mg),Alcohol_(g)
 11000000,"Milk, human",70,1.03,6.89,6.89,0,4.38,14,61,0.011,5,32,0.03,51,17,0,0
 11100000,"Milk, NFS",52,3.33,4.83,4.88,0,2.14,9,58,0.061,0.1,125,0,156,39,0,0
 11111000,"Milk, whole",61,3.27,4.63,4.81,0,3.2,12,32,0.061,0,123,0,150,38,0,0
