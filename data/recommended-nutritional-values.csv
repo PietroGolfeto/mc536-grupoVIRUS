@@ -1,2 +1,2 @@
-Food_code,Main_food_description,Energy_(kcal),Protein_(g),Carbohydrate_(g),Sugars_total(g),Fiber_total_dietary_(g),Total_Fat_(g),Cholesterol_(mg),Vitamin_A_RAE_(mcg_RAE),Vitamin_B-6_(mg),Vitamin_C_(mg),Calcium_(mg),Iron(mg),Potassium_(mg),Sodium_(mg)
+Energy_(kcal),Protein_(g),Carbohydrate_(g),Sugars_total(g),Fiber_total_dietary_(g),Total_Fat_(g),Cholesterol_(mg),Vitamin_A_RAE_(mcg_RAE),Vitamin_B-6_(mg),Vitamin_C_(mg),Calcium_(mg),Iron(mg),Potassium_(mg),Sodium_(mg)
 2000,50,275,50,28,78,300,900,1.7,90,1300,18,4700,2300
