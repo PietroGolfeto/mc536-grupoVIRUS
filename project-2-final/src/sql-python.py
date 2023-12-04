@@ -167,3 +167,6 @@ with open(os.path.join(dirname, '../../data/recommended-nutritional-values.csv')
         print("Nenhum dado encontrado.")
     for row in rows:
         print(row)
+
+conn.commit()
+conn.close()
