@@ -5,8 +5,11 @@ cursor = conn.cursor()
 
 import csv
 
+import os
+dirname = os.path.dirname(__file__)
+
 # Code_Description
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Code_Description.csv', newline='') as csvfile:
+with open(os.path.join(dirname, '../../data/FCID_Code_Description.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     
@@ -34,14 +37,14 @@ with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Co
 
 
 #CropGroup_Description
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_CropGroup_Description.csv', newline='') as csvfile:
+with open(os.path.join(dirname, '../../data/FCID_CropGroup_Description.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     
     header = next(csv_reader)  # Lê a primeira linha como cabeçalho
     
     cursor.execute(f"DROP TABLE IF EXISTS FCID_CropGroup_Description")
-    cursor.execute(f"CREATE TABLE FCID_CropGroup_Description (CGN VARCHAR(2), Crop_Group_Description VARCHAR(80))")
+    cursor.execute(f"CREATE TABLE FCID_CropGroup_Description (CGN VARCHAR(3), CGL VARCHAR(4), Crop_Group_Description VARCHAR(80))")
 
     csvfile.seek(0)
     next(csv_reader)  # Pular o cabeçalho
@@ -62,7 +65,7 @@ with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Cr
 
 
 # Food_Code_Description
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Food_Code_Description.csv', newline='') as csvfile:
+with open(os.path.join(dirname, '../../data/FCID_Food_Code_Description.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     
@@ -83,7 +86,7 @@ with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Fo
 
 
 #Recipes
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Recipes.csv', newline='') as csvfile:
+with open(os.path.join(dirname, '../../data/FCID_Recipes.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     
@@ -111,7 +114,7 @@ with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FCID_Re
 
 
 #Nutrient Values
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FNDDS_Nutrient_Values.csv', newline='') as csvfile:
+with open(os.path.join(dirname, '../../data/FNDDS_Nutrient_Values.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     
@@ -138,8 +141,8 @@ with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/FNDDS_N
         print(row)
 
 
-# Food_Code_Description
-with open('/Users/sarab/OneDrive/Documentos/GitHub/mc536-grupoVIRUS/data/recommended-nutritional-values.csv', newline='') as csvfile:
+# valores nutricionais
+with open(os.path.join(dirname, '../../data/recommended-nutritional-values.csv'), newline='') as csvfile:
     # Criando um leitor CSV
     csv_reader = csv.reader(csvfile)
     

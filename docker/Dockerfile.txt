@@ -22,8 +22,8 @@ USER ${NB_USER}
 
 RUN pip install -r ./mc536-grupoVIRUS/binder/requirements.txt
 
-RUN chmod +x ./lab2learn/binder/postBuild && \
-    sh       ./lab2learn/binder/postBuild
+RUN chmod +x ./mc536-grupoVIRUS/binder/postBuild && \
+    sh       ./mc536-grupoVIRUS/binder/postBuild
 
 
 ENV LANG=C.UTF-8
