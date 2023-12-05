@@ -11,7 +11,7 @@ A segunda versão do projeto traz uma análise que une o poder de bancos de dado
 
 ## Modelo Conceitual
 
-![ER Taxi](images/diagrama_er.png)
+![ER Taxi](assets/diagrama_er.png)
 
 ## Modelos Lógicos
 
@@ -33,7 +33,7 @@ Nutrient_Values(_Food_Code_, Main food description, Energy (kcal), Carbohydrate 
 Recommended_Values(Nutrient, Reference Daily Intake)
 ~~~
 
-![Modelo Lógico de Grafos](images/diagrama_grafos.png)
+![Modelo Lógico de Grafos](assets/diagrama_grafos.png)
 ## Base de dados
 
 título da base | link | breve descrição
@@ -66,7 +66,7 @@ Por causa dessa dificuldade, decidimos seguir por uma abordagem mais adequada à
    * Primeiro, foi criada uma view estendendo a tabela receitas, adicionando uma nota para essa receita. Essa nota é calculada pela média dos três níveis (nível de gordura, sódio e açúcar), por meio da fórmula:
    **Nivel = (Quantidade do nutriente presente em 100 g da receita)/(Valor recomendado para 100g)**
 
-   ~~~
+   ~~~sql
    CREATE VIEW Receitas_Diet AS
                SELECT R.Food_Code, R.Food_Desc, 
                N.Total_Fat/6 AS Nivel_Gordura, N.Sugars_total/15 AS Nivel_Acucar, N.Sodium/600 AS Nivel_Sodio, (N.Total_Fat/6 + N.Sugars_total/15 + N.Sodium/600)/3 AS Nota
@@ -77,7 +77,7 @@ Por causa dessa dificuldade, decidimos seguir por uma abordagem mais adequada à
    Foram desconsideradas receitas contendo cafeína e álcool, bem como as com valores muito insignificantes dos nutrientes usados para essa análise.
    Para calcular a nota, foi tirada uma média entre os indicadores dos três nutrientes, sendo as receitas *diet* aquelas com as menores notas.
 
-   ~~~
+   ~~~sql
    SELECT * FROM Receitas_Diet ORDER BY Nota LIMIT 10;
 
    SELECT Food_Code, Food_Desc, Nivel_Gordura FROM Receitas_Diet ORDER BY Nivel_Gordura DESC LIMIT 10;
@@ -100,7 +100,7 @@ Por causa dessa dificuldade, decidimos seguir por uma abordagem mais adequada à
    Obs.: a query pra essa view era muito grande então não foi inclusa aqui, mas está presente no notebook.
 
    Em seguida, criamos outra view contendo agora um atributo nota, dado pela soma das colunas individuais de cada ingrediente. Essa nota define o quão balanceada cada receita é.
-   ~~~
+   ~~~sql
    CREATE VIEW Receitas_Balanceadas AS
                SELECT R.Food_Code, R.Food_Desc, RG.Energy_level + RG.Protein_level + RG.Carbohydrate_level + RG.Sugars_total_level + RG.Fiber_total_dietary_level + RG.Total_Fat_level + RG.Cholesterol_level + RG.Vitamin_A_RAE_level + RG.Vitamin_B6_level + RG.Vitamin_C_level + RG.Calcium_level + RG.Iron_level + RG.Potassium_level + RG.Sodium_level AS Nota
                FROM FCID_Food_Code_Description R, FNDDS_Nutrient_Values N, Receitas_Grau RG
@@ -116,7 +116,7 @@ Por causa dessa dificuldade, decidimos seguir por uma abordagem mais adequada à
 
 #### Implementação
 
-~~~
+~~~cypher
 // LOAD: RECOMMENDED VALUES
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/recommended-nutritional-values.csv" AS line
 CREATE (:Recommended_Values {Energy_kcal: line.`Energy_(kcal)`, Protein_g: line.`Protein_(g)`, Carbohydrate: line.`Carbohydrate_(g)`, Sugars_total_g: line.`Sugars_total(g)`, Fiber_total_dietary_g: line.`Fiber_total_dietary_(g)`, Total_Fat_g: line.`Total_Fat_(g)`, Cholesterol_mg: line.`Cholesterol_(mg)`,Calcium_mg: line.`Calcium_(mg)`, Iron_mg: line.`Iron(mg)`, Potassium_mg: line.`Potassium_(mg)`, Sodium_mg: line.`Sodium_(mg)`})
@@ -180,7 +180,7 @@ ON MATCH SET ric.weight = ric.weight+1
     * Com a finalidade de analisar a inter-relação entre as diferentes receitas com base em sua composição atômica de ingredientes, possibilitando assim uma métrica de paridade e igualdade entre as receitas, fez-se necessário a utilização de queries para buscar as receitas procuradas com base no ingrediente em comum e em seguida juntar as receitas com uma aresta com peso relativo a semelhança entre ambas. As mais similares são logo então retornadas.
     * Desse modo é possível criar comunidades de receitas nas quais a ligação representa uma relação de equivalência, sendo possível avaliar receitas que vão certos conjuntos de ingredientes e iterativamente ir-se trocando um ou mais ingredientes da composição por outros alternativos, mas ainda assim mantendo as propriedades principais da receita original (ao menos até certo ponto)
 
-    ~~~
+    ~~~cypher
     MATCH(r1:Recipe)
     MATCH(r2:Recipe)
     WHERE r1.Food_Code <> r2.Food_Code
@@ -199,7 +199,7 @@ ON MATCH SET ric.weight = ric.weight+1
  * Quais os crop groups mais centrais, com base no número de receitas?
    
    * Foi necessário criar um atributo "Centrality" nos nós que representam os Crop Groups. Assim, sempre que encontrarmos uma Receita que possui um ingrediente de um determinado Crop Group, esse atributo é incrementado. Em seguida, podemos selecionar apenas os nós de Crop Group com uma "Centrality" alta. No exemplo, estão apenas os nós onde a centralidade é maior que 1000.
-   ~~~
+   ~~~cypher
     MATCH(g:Crop_Group)
     SET g.Centrality = 0
 
@@ -213,8 +213,8 @@ ON MATCH SET ric.weight = ric.weight+1
     RETURN g
    ~~~
    Abaixo, estão fotos dos Crop Groups e suas centralidades:
-   ![Crop Groups mais centrais](images/cropgroup.png)
-   ![Centralidades](images/centralidades.png)
+   ![Crop Groups mais centrais](assets/cropgroup.png)
+   ![Centralidades](assets/centralidades.png)
 
 ## Conclusões
 Ao tentar fazer a comunicação de bancos de dados que não haviam sido nativamente preparados para isso, apredemos que fazer esse tipo de ligação seria uma solução deselegante e forçada para o nosso problema, pois seria extremamente restrita não apenas aos bancos de dados que estávamos utilizando naquele contexto como também comprometeria a escalabilidade do código. Se registros novos chegassem, o funcionamento de nossas aplicações estaria fragilizado, pois foi pensado apenas para aquele momento específico do banco. Isso fez com que aprendêssemos a de fato pensar não apenas no momento de implementação e nos resultados mais imediatos da pesquisa, mas em sua durabilidade e possível contribuição futuras vistas. 
