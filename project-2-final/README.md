@@ -4,10 +4,10 @@ A segunda versão do projeto traz uma análise que une o poder de bancos de dado
 ## Slides
 
 ### Apresentação Prévia
-> Coloque aqui o link para o PDF da apresentação prévia
+[Slides](slides/MC536%20-%20Projeto%202.pdf)
 
 ### Apresentação Final
-> Coloque aqui o link para o PDF da apresentação final
+[Slides](slides/MC536%20-%20Projeto%202.pdf)
 
 ## Modelo Conceitual
 
