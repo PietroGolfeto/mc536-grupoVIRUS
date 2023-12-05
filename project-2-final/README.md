@@ -216,3 +216,11 @@ ON MATCH SET ric.weight = ric.weight+1
    ![Crop Groups mais centrais](images/cropgroup.png)
    ![Centralidades](images/centralidades.png)
 
+## Conclusões
+Ao tentar fazer a comunicação de bancos de dados que não haviam sido nativamente preparados para isso, apredemos que fazer esse tipo de ligação seria uma solução deselegante e forçada para o nosso problema, pois seria extremamente restrita não apenas aos bancos de dados que estávamos utilizando naquele contexto como também comprometeria a escalabilidade do código. Se registros novos chegassem, o funcionamento de nossas aplicações estaria fragilizado, pois foi pensado apenas para aquele momento específico do banco. Isso fez com que aprendêssemos a de fato pensar não apenas no momento de implementação e nos resultados mais imediatos da pesquisa, mas em sua durabilidade e possível contribuição futuras vistas. 
+
+Além disso, no momento de realmente executar nosssas buscas para criar os diferetes ranks, aprendemos na prática quais os desafios associados à discretização de estados. Ao mesmo tempo que uma discretização alta simplifica o processo e gera um agrupamento maior do objeto de estudo, ela também empobrece os dados disponíveis e pode corromper os resultados. Da primeira vez que realizamos a busca, Gin e Whisky apareceram como algumas das opções mais diet, resultado fruto de como fizemos nossas considerações. Isso nos leva a uma fronteira quase filosófica que questiona o pressuposto de que "números não mentem", pois a depender do tratamento que damos a eles, o resultado pode ser facilmente manipulado para revelar uma condição não condizente com a realidade.
+
+
+## Resultados e discussão
+A partir da análise dos modelos relacionais, chegamos à conclusão de que os alimentos mais diet infelizmente não são os mais balanceados. Esse resultado vem da análise do rank elaborado pela equipe, que salienta a discrepância das duas categorias. Entre os aprofundamentos possíveis do trabalho, poderíamos pensar em elaborar diferentes ranks que dessem maior peso para comidas balanceadas em termos de nutrientes mais importantes para o ser humano. Isso poderia revelar novas interseções com dietas que atendem aos requisitos mais relevantes da alimentação humana.
