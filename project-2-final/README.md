@@ -124,4 +124,21 @@ Conclusão: fazer esse tipo de ligação seria uma solução deselegante e forç
 #### Pergunta/Análise 2
  * Quais os crop groups mais centrais, com base no número de receitas?
    
-   >* Explicação sucinta da análise que será feita e conjunto de queries que responde à pergunta.
+   * Foi necessário criar um atributo "Centrality" nos nós que representam os Crop Groups. Assim, sempre que encontrarmos uma Receita que possui um ingrediente de um determinado Crop Group, esse atributo é incrementado. Em seguida, podemos selecionar apenas os nós de Crop Group com uma "Centrality" alta. No exemplo, estão apenas os nós onde a centralidade é maior que 1000.
+   ~~~
+    MATCH(g:Crop_Group)
+    SET g.Centrality = 0
+
+    MATCH(r:Recipe)-[:Recipe_Of_Ingredient]->(i:Ingredient)-[:Food_Group]->(g:Crop_Group)
+    MERGE(r)-[x:Has_Group]->(g)
+    ON CREATE SET g.Centrality=g.Centrality+1
+    ON MATCH SET g.Centrality=g.Centrality+1
+
+    MATCH(g:Crop_Group)
+    WHERE g.Centrality>1000
+    RETURN g
+   ~~~
+   Abaixo, estão fotos dos Crop Groups e suas centralidades:
+   ![Crop Groups mais centrais](images/cropgroup.png)
+   ![Centralidades](images/centralidades.png)
+
