@@ -114,10 +114,86 @@ Por causa dessa dificuldade, decidimos seguir por uma abordagem mais adequada à
 
 ### Perguntas/Análise com Resposta Implementada - Grafos
 
+#### Implementação
+
+~~~
+// LOAD: RECOMMENDED VALUES
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/recommended-nutritional-values.csv" AS line
+CREATE (:Recommended_Values {Energy_kcal: line.`Energy_(kcal)`, Protein_g: line.`Protein_(g)`, Carbohydrate: line.`Carbohydrate_(g)`, Sugars_total_g: line.`Sugars_total(g)`, Fiber_total_dietary_g: line.`Fiber_total_dietary_(g)`, Total_Fat_g: line.`Total_Fat_(g)`, Cholesterol_mg: line.`Cholesterol_(mg)`,Calcium_mg: line.`Calcium_(mg)`, Iron_mg: line.`Iron(mg)`, Potassium_mg: line.`Potassium_(mg)`, Sodium_mg: line.`Sodium_(mg)`})
+
+// LOAD: INGREDIENT
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FCID_Code_Description.csv" AS line
+CREATE (:Ingredient {FCID_Code: line.FCID_Code, FCID_Desc: line.FCID_Desc})
+
+CREATE INDEX FOR (i:Ingredient) ON (i.FCID_Code)
+
+// LOAD: CROPGROUP
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FCID_Cropgroup_Description.csv" AS line
+#CG auxiliar
+CREATE (:CG {CGN: line.CGN, CGL: line.CGL, Description: line.Crop_Group_Description});
+    
+MATCH (n:CG) WHERE (n.CGN=n.CGL)
+CREATE (:Crop_Group {CGN: n.CGN, Crop_Group_Description: n.Description, Is_Vegan: 0});
+    
+MATCH (n:Crop_Group) WHERE toInteger(n.CGN)<25 OR toInteger(n.CGN)=86
+SET n.Is_Vegan = 1
+    
+MATCH (k:CG) DELETE (k)
+    
+CREATE INDEX FOR (cg:Crop_Group) on (cg.CGN)
+
+// RELATION: FOOD_GROUP
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FCID_Code_Description.csv" AS line
+MATCH(i:Ingredient {FCID_Code: line.FCID_Code})
+MATCH(c:Crop_Group {CGN: line.cgn})
+MERGE (i)-[fg:Food_Group]->(c)
+
+// LOAD: RECIPE
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FNDDS_Nutrient_Values.csv" AS line
+CREATE (:Recipe {Food_Code: line.Food_code, Energy_kcal: line.`Energy_(kcal)`, Protein_g: line.`Protein_(g)`, Carbohydrate: line.`Carbohydrate_(g)`, Sugars_total_g: line.`Sugars_total(g)`, Fiber_total_dietary_g: line.`Fiber_total_dietary_(g)`, Total_Fat_g: line.`Total_Fat_(g)`, Cholesterol_mg: line.`Cholesterol_(mg)`,Calcium_mg: line.`Calcium_(mg)`, Iron_mg: line.`Iron(mg)`, Potassium_mg: line.`Potassium_(mg)`, Sodium_mg: line.`Sodium_(mg)`})
+
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FCID_Food_Code_Description.csv" AS line
+MATCH(r:Recipe {Food_Code: line.Food_Code})
+set r.Food_Desc = line.Food_Desc
+
+CREATE INDEX FOR (r:Recipe) ON (r.Food_Code)
+
+// Ingredient_Of_Recipe/Recipe_Of_Ingredient/Present_On_Recipe
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/PietroGolfeto/mc536-grupoVIRUS/main/data/FCID_Recipes.csv" AS line
+MATCH(r:Recipe {Food_Code: line.Food_Code})
+MATCH(i:Ingredient {FCID_Code: line.FCID_Code})
+MATCH (i)-[fg:Food_Group]->(c:Crop_Group)
+MERGE (r)-[ri:Recipe_Of_Ingredient {Ingredient_Order: line.Ingredient_Num}]->(i)
+MERGE (i)-[ir: Ingredient_Of_Recipe {Ingredient_Order: line.Ingredient_Num}]->(r)
+MERGE (c)-[:Present_On_Recipe]->(r)
+
+// Recipe in Common
+MATCH(i1:Ingredient)-[r1:Ingredient_Of_Recipe]->(r:Recipe)<-[r2:Ingredient_Of_Recipe]-(i2:Ingredient)
+Merge(i1)<-[ric:Recipe_In_Common]->(i2)
+ON CREATE SET ric.weight = 0
+ON MATCH SET ric.weight = ric.weight+1
+~~~
+
 #### Pergunta/Análise 1
  * Que receitas possuem o maior número relativo de ingredientes compartilhados? Vamos analisar comunidades das receitas e seus nutrientes predominantes para caracterizar elas (grupo dos carbs, proteína etc.).
    
-   >* Explicação sucinta da análise que será feita e conjunto de queries que responde à pergunta.
+    * Com a finalidade de analisar a inter-relação entre as diferentes receitas com base em sua composição atômica de ingredientes, possibilitando assim uma métrica de paridade e igualdade entre as receitas, fez-se necessário a utilização de queries para buscar as receitas procuradas com base no ingrediente em comum e em seguida juntar as receitas com uma aresta com peso relativo a semelhança entre ambas. As mais similares são logo então retornadas.
+    * Desse modo é possível criar comunidades de receitas nas quais a ligação representa uma relação de equivalência, sendo possível avaliar receitas que vão certos conjuntos de ingredientes e iterativamente ir-se trocando um ou mais ingredientes da composição por outros alternativos, mas ainda assim mantendo as propriedades principais da receita original (ao menos até certo ponto)
+
+    ~~~
+    MATCH(r1:Recipe)
+    MATCH(r2:Recipe)
+    WHERE r1.Food_Code <> r2.Food_Code
+    MATCH(r1)-[:Recipe_Of_Ingredient]->(:Ingredient)-[:Ingredient_Of_Recipe]->(r2)
+    Merge (r1)<-[p:Parity]->(r2)
+    ON CREATE SET p.weight = 0
+    ON MATCH SET p.weight = p.weight+1
+
+    MATCH x = ()-[p:Parity]->()
+    WHERE p.weight>5
+    RETURN p
+    ~~~
+
 
 #### Pergunta/Análise 2
  * Quais os crop groups mais centrais, com base no número de receitas?
