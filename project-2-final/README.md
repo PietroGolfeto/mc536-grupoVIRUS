@@ -42,7 +42,7 @@ FCID | [Food Commodity Intake Database](https://fcid.foodrisk.org/) | relaciona 
 FNDDS | [FNDDS Databases](https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/food-surveys-research-group/docs/fndds-download-databases/) | traz uma vasta análise nutricional de diferentes alimentos
 
 ## Detalhamento do Projeto
-Nosso projeto conta com dois bancos de dados principais: o FCID e o FNDDS. A escolha deles foi pautada na compatibilidade entre os dois devido à existência de um código em comum que faz a comunicação tanto entre as tabelas internas quanto externas. Nossa análise se divide em dois momentos principais. Inicialmente confrontamos dois rótulos comercializados amplamente: o diet versus o saudável. Fazer a análise do balanceamento de uma receita é possível por meio da consideração de um intervalo nutricional completo, enquanto sua competidora é baseada somente nos aspectos de gordura total, açúcares e sódio. Em um segundo momento, caçamos similaridades imperceptíveis à primeira vista a partir de uma visão fundamentada em grafos, fortemente fundamentada em conceitos de centralidade. 
+Nosso projeto conta com dois bancos de dados principais: o FCID e o FNDDS. A escolha deles foi pautada na compatibilidade entre os dois devido à existência de um código em comum que faz a comunicação tanto entre as tabelas internas quanto externas. Nossa análise se divide em dois momentos principais. Inicialmente confrontamos dois rótulos comercializados amplamente: o diet versus o saudável. Fazer a análise do balanceamento de uma receita é possível por meio da consideração de um intervalo nutricional completo, enquanto sua competidora é baseada somente nos aspectos de gordura total, açúcares e sódio. Em um segundo momento, caçamos similaridades imperceptíveis à primeira vista a partir de uma visão fundamentada em grafos, fortemente fundamentada em conceitos de centralidade e comunidade.
 
 ## Evolução do projeto
 A primeira grande dificuldade encontrada pelo grupo de trabalho foi encontrar bases que tivessem algum tipo de conexão, seja por meio de um ID comum ou por usar a mesma nomenclatura ao se referir aos alimentos. Como encontrar bancos de dado com essas caractérisitcas estava se mostrando muito difícil, começamos a considerar um pré-processamento dos dados armazenados nos arquivos csv. No caso de nomes comuns entre diferentes comidas, encontramos por exemplo um banco que tinha os nomes no plural e outros no singular. A primeira solução foi simplesmente exlcuir o "s" do final de todos os registros. Mas e quanto aos que naturalmente terminam em s? Isso poderia inutilizar grande parte dos dados e não garantiria uma comunicação confiável. Pensamos então em criar um algoritmo que verificasse similaridades entre strings e a partir de uma certa porcentagem de semelhança decidisse que se tratava da mesma comida. Mas e quanto a nomes curtos? A diferença entre "eggs" e "egg" é de apenas uma letra, mas apresenta uma porcentagem muito maior que "eggplant" e "eggplants".  A gota d'água foi quando descobrimos que um deles se referia a porco como pork e o outro como pig... 
@@ -190,8 +190,8 @@ ON MATCH SET ric.weight = ric.weight+1
     ON MATCH SET p.weight = p.weight+1
 
     MATCH x = ()-[p:Parity]->()
-    WHERE p.weight>5
-    RETURN p
+    RETURN p 
+    ORDER BY p.weight DESC LIMIT 10
     ~~~
 
 
