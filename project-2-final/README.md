@@ -38,8 +38,8 @@ Recommended_Values(Nutrient, Reference Daily Intake)
 
 título da base | link | breve descrição
 ----- | ----- | ----- 
-FCID | [Food Commodity Intake Database](https://fcid.foodrisk.org/) | 
-FNDDS | [FNDDS Databases](https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/food-surveys-research-group/docs/fndds-download-databases/) |
+FCID | [Food Commodity Intake Database](https://fcid.foodrisk.org/) | relaciona receitas a seus ingredientes e crop groups
+FNDDS | [FNDDS Databases](https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/food-surveys-research-group/docs/fndds-download-databases/) | traz uma vasta análise nutricional de diferentes alimentos
 
 ## Detalhamento do Projeto
 > Apresente aqui detalhes do processo de construção do dataset e análise. Nesta seção ou na seção de Perguntas podem aparecer destaques de código como indicado a seguir. Note que foi usada uma técnica de highlight de código, que envolve colocar o nome da linguagem na abertura de um trecho com `~~~`, tal como `~~~python`.
